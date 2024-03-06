@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>boardweb</display-name>
+
+	<listener>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+
+	<!-- welcome.do 요청 -> co.yedam.WelcomeServlet 실행.(태그를 통해) 이런 방식이 원래 먼저있었고, 
+		나중에 아예 서블릿파일 만들어서..라는 기능이.(둘다 장단점있음) -->
+	<servlet>
+		<servlet-name>welcome</servlet-name>
+		<servlet-class>co.yedam.WelcomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>welcome</servlet-name>
+		<url-pattern>/welcome.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 많은 서블릿을 한번에 보관하기 위함. 위의 서블릿말고 또하나를 더 만든다. *.do : .do로끝나는 요청은 모두 FrontController 
+		실행 -->
+	<servlet>
+		<servlet-name>front</servlet-name>
+		<servlet-class>co.yedam.common.FrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>front</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<!-- <welcome-file>index.html</welcome-file> 대신 jsp > 왜? 기능이 많다. -->
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
