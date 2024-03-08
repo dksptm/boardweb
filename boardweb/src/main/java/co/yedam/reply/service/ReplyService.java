@@ -20,4 +20,7 @@ public interface ReplyService {
 	
 	// 시도정보차트.
 	List<Map<String, Object>> getCntSido();
+	
+	//
+	List<Reply> replyList2(int bno);
 }

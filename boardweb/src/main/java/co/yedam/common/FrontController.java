@@ -104,6 +104,9 @@ public class FrontController extends HttpServlet{
 		// chart.
 		controls.put("/getSidoInfo.do", new SidoInfoControl());
 		
+		// datatable.
+		controls.put("/dataTable.do", new dataTableControl());
+		
 		
 	}
 	

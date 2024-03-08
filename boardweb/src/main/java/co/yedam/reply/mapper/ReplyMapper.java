@@ -25,4 +25,7 @@ public interface ReplyMapper {
 	
 	// chart.
 	List<Map<String, Object>> countPerSido();
+	
+	// datatable
+	List<Reply> selectList2(int bno); 
 }

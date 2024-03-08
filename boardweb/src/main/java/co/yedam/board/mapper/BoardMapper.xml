@@ -115,6 +115,6 @@
     DELETE FROM tbl_book
     WHERE  book_code = #{bcode}
   </delete>
-  
+ 
   
 </mapper>

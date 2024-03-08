@@ -36,4 +36,5 @@ public interface BoardMapper {
 	int insertBook(Book book);
 	int deleteBook(String bcode);
 
+
 }

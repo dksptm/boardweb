@@ -67,4 +67,15 @@
 	GROUP BY sido
   </select>
   
+  <select id="selectList2" parameterType="int" resultType="reply">
+	SELECT  reply_no
+	       ,board_no
+	       ,reply
+	       ,replyer
+	       ,reply_date
+	FROM   (SELECT /*+ INDEX(r reply_pk) */ r.*
+	        FROM   tbl_reply r)
+	WHERE  board_no = #{bno}
+  </select>
+  
 </mapper>

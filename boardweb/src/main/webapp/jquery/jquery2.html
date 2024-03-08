@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    Todo: <input type="text" id="userVal"><button id="addBtn">추가</button>
+    <br>
+    <ul id="list"></ul>
+
+    <hr />
+    학번: <input type="text" id="sno">
+    이름: <input type="text" id="sname">
+    점수: <input type="text" id="score">
+    <button class="addBtn">등록</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th><input type="checkbox" name="" id=""></th><th>학번</th><th>이름</th><th>점수</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>101</td>
+                <td>홍길동</td>
+                <td>99</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>102</td>
+                <td>김길동</td>
+                <td>89</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>103</td>
+                <td>박길동</td>
+                <td>77</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <script>
+        $('#addBtn').on('click', function(e) {
+            let val = $('#userVal').val();
+            let delBtn = $('<button>삭제</button>'); // $('<button>').text('삭제')도 가능.
+            delBtn.on('click', function(e){
+                delBtn.parent().remove();
+            })
+            $('ul#list').append($('<li>').text(val+' ').append(delBtn)); //<li>홍길동 <button /></li>
+            $('#userVal').val('');
+        })
+
+       /*  $('.addBtn').on('click', function(e) {
+            let student = [$('#sno').val(),  $('#sname').val(), $('#score').val()];
+            let tr = $('<tr>');
+            student.forEach(std => tr.append($('<td>').text(std)));
+            $('tbody#list').append(tr);
+            $('#sno').val('');
+            $('#sname').val('');
+            $('#score').val('');
+        }) */
+		
+        $('.addBtn').on('click', function(e) {
+            $('tbody#list').append(
+                $('<tr />').append(
+                    $('<td />').append($('<input>').attr('type', 'checkbox')),
+                    $('<td />').text($('#sno').val()),
+                    $('<td />').text($('#sname').val()),
+                    $('<td />').text($('#score').val())
+                )
+            );
+            $('#sno').val('');
+            $('#sname').val('');
+            $('#score').val('');
+        })
+
+        $('thead input[type="checkbox"]').on('change', function(e) {
+            //console.log($(this).prop('checked'));
+            let trueOrFalse = $(this).prop('checked');
+            $('tbody input[type="checkbox"]').prop('checked', trueOrFalse);
+        })
+        
+    </script>
+</body>
+</html>
