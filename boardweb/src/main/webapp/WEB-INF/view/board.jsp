@@ -59,22 +59,10 @@
 		<button class="col-sm-2 btn btn-outline-success btn-sm addReply">댓글등록</button>
 	</div>
 	<!-- 댓글목록. -->
-	<div class="content">
-		<ul>
-			<li>
-				<span class="col-sm-2">댓글번호</span>
-				<span class="col-sm-5">내용</span>
-				<span class="col-sm-2">작성자</span>
-				<span class="col-sm-2">삭제</span>
-			</li>
-			<li><hr></li>
-		</ul>
-	</div>
-	<!-- 댓글페이지. -->
 	<div class="footer">
 		<!-- datatable 사용해보기. -->
 		<table id="example" class="display" style="width: 100%">
-			<thead>
+ 			<thead>
 				<tr>
 					<th>댓글번호</th>
 					<th>댓글내용</th>
@@ -82,14 +70,14 @@
 					<th>작성일시</th>
 				</tr>
 			</thead>
-			<tfoot>
+			<!-- <tfoot>
 				<tr>
 					<th>댓글번호</th>
 					<th>댓글내용</th>
 					<th>작성자</th>
 					<th>작성일시</th>
 				</tr>
-			</tfoot>
+			</tfoot> -->
 		</table>
 		<!-- datatable -->
 	</div>
@@ -107,17 +95,21 @@
 		form.action = 'updateForm.do';
 	}
 	
-	$('#example').DataTable({
+	var table = $('#example').DataTable({
 	    ajax: 'dataTable.do?bno=' + bno,
 	    columns: [
-	        { data: 'name' },
-	        { data: 'position' },
-	        { data: 'office' },
-	        { data: 'extn' },
-	        { data: 'start_date' },
-	        { data: 'salary' }
+	        { data: 'replyNo' },
+	        { data: 'reply' },
+	        { data: 'replyer' },
+	        { data: 'replyDate' }
+	    ],
+	    lengthMenu: [
+	    	[5, 10, 20, -1],
+	    	[5, 10, 20, 'All']
 	    ]
 	});
+	$('.addReply').on('click', function(e){
+		table.row.add({'replyNo': '1', 'reply':'ㅇㅇㅇ', 'replyer':'user01', 'replyDate':'2021'}).draw(false);
+	})
+	
 </script>
-
-<script type="module" src="static/js/boardService3.js"></script>
