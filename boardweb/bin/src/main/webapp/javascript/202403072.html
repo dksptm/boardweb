@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <title>Document</title>
+  <style>
+    
+    option {
+      font-size: 2rem;
+    }
+
+    .left {
+      background: pink;
+    }
+
+    .right {
+      background: lightblue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <select class="left" multiple style="height:300px">
+    <option value="">hello1</option>
+    <option value="">hello2</option>
+    <option value="">hello3</option>
+    <option value="">hello4</option>
+    <option value="">hello5</option>
+  </select>
+
+  <button>+</button>
+  <button>-</button>
+
+  <select class="right" multiple style="height:300px">
+    <option value="">world1</option>
+    <option value="">world2</option>
+    <option value="">world3</option>
+    <option value="">world4</option>
+    <option value="">world5</option>
+  </select>
+
+  <script>
+    // $('button').eq(1).on('click', function(e) {
+    //   $('.right').append($('.left option:selected'));
+    // })
+    $('button').eq(0).on('click', function(e) {
+      $('.left').append($('.right option:selected'));
+    })
+
+    document.querySelector('button:nth-of-type(2)').addEventListener('click', function(e){
+      document.querySelectorAll('.left option').forEach(opt => {
+        if(opt.selected == true){
+          document.querySelector('.right').append(opt);
+        }
+      })
+    })
+
+  </script>
+
+</body>
+
+</html>

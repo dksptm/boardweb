@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript jqueryAjax html</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    // $.get('url', 불러왔을때 실행할 콜백함수)
+    $.get('../bookList.do', function(result) {
+        //console.log(result);
+        result.forEach((item, idx, ary) => {
+            console.log(item, idx, ary);
+        });
+
+        $(result).each((index, item) => {
+            //console.log(index, item);
+            $('<tr />').append(
+                $('<td />').text(item.bookCode),
+                $('<td />').text(item.bookName),
+                $('<td />').text(item.author)
+            ).appendTo($('table:eq(1) tbody'));
+        });
+    })
+
+    // $.post('url', 데이터, 콜백함수)
+    // Dom 요소 로딩 후 처리.
+    // $(document).ready(function(e) {
+    //     $('#addBtn').on('click', function(e) {
+    //         //console.log(e);//console.log(this);
+    //         // ajax 호출.
+    //         let bcode = $('#bcode').val();
+    //     	let bname = $('#bname').val();
+    //     	let bauthor = $('#bauthor').val();
+    //     	let bpress = $('#bpress').val();
+    //     	let bprice = $('#bprice').val();
+    //         $.post('../addBook.do', 
+    //             {bcode, bname, bauthor, bpress, bprice}, 
+    //             function(result){
+    //                 console.log(result);
+    //                 if(result.retCode == 'OK'){
+    //                 	alert('등록성공');
+    //                     $('<tr />').append(
+    //                         $('<td />').text(bcode),
+    //                         $('<td />').text(bname),
+    //                         $('<td />').text(bauthor)
+    //                     ).appendTo($('table:eq(1) tbody'));
+    //                 } else {
+    //                 	alert('등록실패');
+    //                 }
+    //             })
+    //     })
+    // })
+
+    // $.ajax()
+    $(function(e) {
+        $('#addBtn').on('click', function(e) {
+            $.ajax({
+                url: '../addBook.do',
+                method: 'post',
+                data: {bcode:$('#bcode').val(),
+                    bname:$('#bname').val(),
+                    bauthor: $('#bauthor').val(),
+                    bpress: $('#bpress').val(),
+                    bprice: $('#bprice').val()},
+                dataType: 'json'
+            })
+            .done(function(result){
+                console.log('결과 => ',result); // OK, NG
+                if(result.retCode == 'OK'){
+                    alert('등록성공');
+                    $('<tr />').append(
+                        $('<td />').text($('#bcode').val()),
+                        $('<td />').text($('#bname').val()),
+                        $('<td />').text($('#bauthor').val())
+                    ).appendTo('table:eq(1) tbody')
+                } else {
+                    alert('등록실패');
+                }
+            })
+            .fail(function(err) {
+                console.log(err);
+            })
+            .always(function(r){
+                alert('끝');
+                console.log('처리완료 =>',r);
+            })
+        })
+    })
+
+
+</script>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+          <th>도서코드</th>
+          <td><input type="text" id="bcode" value="B005"></td>
+        </tr>
+        <tr>
+          <th>도서명</th>
+          <td><input type="text" id="bname" value="Ajax 배우기"></td>
+        </tr>
+        <tr>
+          <th>저자명</th>
+          <td><input type="text" id="bauthor" value="김저자"></td>
+        </tr>
+        <tr>
+          <th>출판사</th>
+          <td><input type="text" id="bpress" value="행복출판사"></td>
+        </tr>
+        <tr>
+          <th>가격</th>
+          <td><input type="number" id="bprice" value="25000"></td>
+        <tr>
+          <td colspan="2" align="center">
+            <button id="addBtn">등록</button>
+          </td>
+        </tr>
+    </table>
+    <br><br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>도서코드</th><th>도서명</th><th>저자</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</body>
+</html>

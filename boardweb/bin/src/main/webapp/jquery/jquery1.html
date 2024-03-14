@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery1</title>
+<script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <div id="show"></div>
+  
+  <script>
+	//jquery객체. document.createElement('ul')=> $ ('<ul />') 
+	//jquery객체라면 계속 붙여서 쓸수있다. 
+	//.text => innerText (속성아니고 모두 메소드다.)
+    let ulTag = $('<ul />').append($('<li />').text('홍길동'), $('<li />').text('김민석'));
+	console.log(ulTag); //컬렉션
+	$('#show').append(ulTag);
+  </script>
+</body>
+</html>

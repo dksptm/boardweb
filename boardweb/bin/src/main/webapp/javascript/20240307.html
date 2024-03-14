@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #show {
+      background: yellow;
+      width: 400px;
+      height: 205px;
+    }
+
+    #show span {
+      display: inline-block;
+      width: 90px;
+      border: 1px solid green;
+      background: pink;
+      margin: 1px;
+    }
+
+    #box {
+      background: rgba(221, 160, 221, 0.5);
+      width: 400px;
+      height: 300px;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">START</div>
+  <div id="showBox">
+    <br><br>
+    <input type="text" id="keyword">
+    <br><br>
+    <div id="show">
+      <span>Lorem</span>
+      <span>ipsum</span>
+      <span>dolor</span>
+      <span>sit,</span>
+      <span>amet</span>
+      <span>consectetur</span>
+      <span>adipisicing</span>
+      <span>elit.</span>
+      <span>Maxime,</span>
+      <span>dicta</span>
+      <span>officia</span>
+      <span>similique</span>
+      <span>ratione</span>
+      <span>id</span>
+      <span>labore</span>
+      <span>tempora</span>
+      <span>iure</span>
+      <span>harum</span>
+      <span>provident,</span>
+      <span>deleniti</span>
+      <span>odio</span>
+      <span>esse</span>
+      <span>officiis</span>
+      <span>illo</span>
+      <span>eos</span>
+      <span>illum</span>
+      <span>quae</span>
+      <span>veritatis</span>
+      <span>vero</span>
+      <span>doloribus.</span>
+    </div>
+  </div>
+  <p></p>
+
+  <script>
+
+
+    // document.querySelector('#timer').addEventListener('click', timer);
+    // function timer(){
+    //   document.querySelector('#box').setAttribute('style','display:block');
+    //   let timing = 5;
+    //   let count = setInterval(function() {
+    //     let now = new Date();
+    //     document.querySelector('#timer').innerText = timing + now.format();
+    //     timing--;
+    //     if(clearCnt == 0 && timing >= 0) {
+    //       alert('성공');
+    //       document.querySelector('#keyword').setAttribute('disabled', true);
+    //       clearInterval(count);
+    //     }
+    //     if(timing < 0) {
+    //       alert('실패');
+    //       document.querySelector('#keyword').setAttribute('disabled', true);
+    //       clearInterval(count);
+    //     }
+    //   }, 1000);
+    // }
+    // clearCnt = 1;
+    // document.getElementById('keyword').addEventListener('change', function(e) {
+    //   let kw = document.getElementById('keyword').value;
+    //   let showList = document.querySelectorAll('#show span');
+    //   showList.forEach(span => {
+    //     if(span.innerText == kw){
+    //       console.log(span.innerText);
+    //       span.setAttribute('style','visibility:hidden');
+    //     }
+    //   });
+    //   document.getElementById('keyword').value = '';
+    // });
+    
+    // const obj = {
+    // 		name: "hong",
+    // 		age: 20,
+    // 		showInfo: function() {
+    // 			return `${this.name}, ${this.age}`;
+    // 		},
+    //     showAge() {
+    //       return `${this.age}`
+    //     }
+    // }
+    
+    // obj.bloodType = 'O';
+    
+    // // Data라는 내장객체에 메소드 추가.
+    // // prototype : 공간효율위함.
+    // Date.prototype.format = function() {
+    // 	let yyyy = this.getFullYear();
+    //   let mm = this.getMonth();
+    //   let dd = this.getDate();
+
+    //   return `${yyyy} ${mm} ${dd}`;
+    // }
+    // Number.prototype.format = function() {
+
+    // }
+    
+
+  </script>
+</body>
+
+</html>
