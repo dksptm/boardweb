@@ -10,4 +10,6 @@ signUpBtn.addEventListener("click", () => {
 });
 signInBtn.addEventListener("click", () => {
   container.classList.remove("right-panel-active");
+  let id = document.querySelector('#id').value;
+  console.log(id);
 });

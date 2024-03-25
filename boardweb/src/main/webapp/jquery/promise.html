@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- XMLHttpRequest, fetch, async/await -->
+
+<script>
+/* 
+  fetch('url') // promise 객체 반환.
+  .then(function(result){
+	  return result.json(); // json => object : 그냥 javascript객체 
+  })
+  .then() // 그냥 javascript객체인데 왜 then사용가능? -> 위에서 내부적으로 then자체가 return을 promise 객체로 만들어줘서 반환해줌
+	 */	  
+
+  // Promise객체
+  	// 프로미스 객체는 매개값으로 실행할 함수를 받는다.new Promise()
+	// (이 함수는 다시 매개값을 이미 두개 가지고있는데, 둘다 함수이다) new Promise(function(){})
+	// (첫번째는 코드에러없으면 첫번째매개값으로 들어오 함수실행, 에러나면 두번째 함수실행) new Promise(function(resolve, reject){})
+	//-> 함수의 결과가 성공/에러
+	
+  const p1 = new Promise(function(resolve, reject){
+	  setTimeout(function(){
+		  resolve('OK'); // resolve 호출하면 정상실행됐다는 뜻. 함수에 매개값으로 OK를 전달.
+		  //reject('NG'); // reject 호출하면 에러났다는 뜻. 함수에 매개값으로 NG를 전달.
+	  }, 1000)
+  }); 
+	
+  const p2 = p1.then(function(result){
+	 console.log('then: ', result);
+	 consoles.log('err');
+	 return 'hello'; // Promise객체로 반환.
+  }) // 여기에 계속 catch를 계속 넣어줘야함!!-> 안넣어도된다고함
+  
+  console.log('p2=>',p2); //promise{}
+  
+  const p3 = p2.then(function(result){
+	  console.log('then2: ', result);
+	  console.log(typeof result); //string...
+	  //return 'world'; //이를 풀어쓴다면 아래와 같다.
+	  return new Promise(function(resolve, reject){
+		  //resolve('world');
+		  reject('err world');
+	  });
+  })
+  
+  console.log('p3=>',p3); //promise{}
+
+  p3.then(function(result){
+	  console.log('then3: ', result);
+  })
+  .catch(function(result){
+	  console.log('err then : ', result); //p1()매개함수 에러거나, p1.then()매개함수 에러일때!
+  })
+	
+  
+</script>
+</body>
+</html>

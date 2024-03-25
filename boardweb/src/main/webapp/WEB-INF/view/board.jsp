@@ -83,7 +83,10 @@
 	</div>
 </div><!-- 댓글영역 -->
 
-<script>
+<script type="module">
+
+ 	import service from "./static/js/boardAjax";
+	
 	const bno = "${board.boardNo }";
 	const replyer = "${logid }";
 
@@ -108,8 +111,13 @@
 	    	[5, 10, 20, 'All']
 	    ]
 	});
-	$('.addReply').on('click', function(e){
-		table.row.add({'replyNo': '1', 'reply':'ㅇㅇㅇ', 'replyer':'user01', 'replyDate':'2021'}).draw(false);
-	})
+	/* $('.addReply').on('click', function(e){
+		var reply = $('#reply').val();
+		service.addReply({bno, reply, replyer},
+				         success => {console.log()},
+				         err => console.error('에러 => ', err));
+		
+		/* table.row.add({'replyNo': '1', 'reply':'ㅇㅇㅇ', 'replyer':'user01', 'replyDate':'2021'}).draw(false); */
+	}) */
 	
 </script>
