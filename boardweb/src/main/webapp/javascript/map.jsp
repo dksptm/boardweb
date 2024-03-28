@@ -10,7 +10,7 @@
 	<div id="map" style="width: 100%; height: 900px;"></div>
 	
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=866dcf642926ab1051d9c242e6894429"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?"></script>
 		
 	<script>
  		console.log("${param}");
