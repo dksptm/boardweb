@@ -3,7 +3,7 @@
  */
 console.log('center.js')
 
-let url = 'https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&serviceKey=mE1CN7xzr3aXt4%2BDH2dN8SIwZlnXMkO3hHulmWVclpgFGD9DrLJvJIssH1o99H0zFgMgRBdEp86aqj%2F38zqfJw%3D%3D';
+let url = 'https://api.odcloud.kr/api/';
 
 let showFields = ['id', 'centerName', 'phoneNumber', 'sido'];
 let tbody = document.querySelector('#list');
